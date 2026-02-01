@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volten Web - Solusi Stamina & Kesehatan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --primary-light: #e8f4fc;
+            --secondary-color: #2c80b4;
+            --accent-color: #1abc9c;
+            --text-dark: #2c3e50;
+            --text-light: #7f8c8d;
+            --white: #ffffff;
+            --gray-light: #f8f9fa;
+            --shadow: rgba(52, 152, 219, 0.15);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 4px 12px var(--shadow);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo-img {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+        }
+        
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        nav a:hover {
+            color: var(--primary-color);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            left: 0;
+            bottom: -5px;
+            transition: var(--transition);
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-light) 0%, #d6eaf8 100%);
+            padding: 150px 0 80px;
+            margin-top: 70px;
+            overflow: hidden;
+        }
+        
+        .hero-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+        
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+        }
+        
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .hero-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            /* box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); */
+            /* Removed shadow for cleaner look with transparent PNGs if applicable */
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.15));
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: var(--text-light);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            border: 2px solid var(--primary-color);
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px var(--shadow);
+        }
+        
+        .btn-accent {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+        
+        .btn-accent:hover {
+            color: var(--accent-color);
+        }
+        
+        /* Section Common Styles */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--text-dark);
+            position: relative;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 4px;
+            background-color: var(--primary-color);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Problem & Solution Section */
+        .problem-solution {
+            background-color: var(--gray-light);
+        }
+        
+        .problem-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .problem-card, .solution-card {
+            background-color: var(--white);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+        
+        .problem-card:hover, .solution-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px var(--shadow);
+        }
+        
+        .problem-card h3, .solution-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+        
+        .problem-card ul, .solution-card ul {
+            list-style-position: inside;
+            margin-bottom: 20px;
+        }
+        
+        .problem-card li, .solution-card li {
+            margin-bottom: 10px;
+            color: var(--text-light);
+        }
+        
+        /* Product Showcase */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            background-color: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px var(--shadow);
+        }
+        
+        .product-img {
+            width: 100%;
+            height: 250px; /* Increased height to fit vertical images better */
+            object-fit: contain; /* Changed to contain so product doesn't get cut off */
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        
+        .product-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+        
+        .product-content p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+        
+        .badges {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .badge {
+            background-color: var(--primary-light);
+            color: var(--primary-color);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        /* Social Proof */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background-color: var(--white);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: var(--text-light);
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .author-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            background-color: #ddd;
+        }
+        
+        /* Business Opportunity */
+        .business-opportunity {
+            background-color: var(--primary-light);
+        }
+        
+        .opportunity-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        /* FAQ */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .faq-question {
+            background-color: var(--white);
+            padding: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+        }
+        
+        .faq-question:hover {
+            background-color: var(--primary-light);
+        }
+        
+        .faq-answer {
+            background-color: var(--gray-light);
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .faq-answer p {
+            padding: 20px 0;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--text-dark);
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-logo-text {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--white);
+        }
+        
+        .footer-links h3, .footer-contact h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .footer-links h3::after, .footer-contact h3::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary-color);
+            bottom: -8px;
+            left: 0;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-color);
+            padding-left: 5px;
+        }
+        
+        .footer-contact p {
+            margin-bottom: 10px;
+            color: #bdc3c7;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #34495e;
+            color: #bdc3c7;
+            font-size: 0.9rem;
+        }
+        
+        /* Floating Member Card */
+        .member-card {
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            background-color: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            padding: 20px;
+            width: 300px;
+            z-index: 999;
+            transform: translateX(400px);
+            transition: transform 0.5s ease;
+        }
+        
+        .member-card.show {
+            transform: translateX(0);
+        }
+        
+        .member-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .member-photo {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: contain;
+            border: 3px solid var(--primary-color);
+            background: #fff;
+        }
+        
+        .member-info h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: var(--text-dark);
+        }
+        
+        .member-info p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        .member-contact {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background-color: var(--primary-light);
+            padding: 12px;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+        
+        .member-contact i {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+        
+        /* WhatsApp Button */
+        .whatsapp-button {
+            position: fixed;
+            bottom: 30px;
+            right: 20px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.8rem;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+        
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero-content {
+                max-width: 100%;
+            }
+            
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: var(--transition);
+                z-index: 999;
+            }
+            
+            nav.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .member-card {
+                width: 250px;
+                right: 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero {
+                padding: 130px 0 60px;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="logo.png" alt="Volten Logo" class="logo-img">
+                <span class="logo-text">VOLTEN WEB</span>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="#problem">Masalah & Solusi</a></li>
+                    <li><a href="#products">Produk</a></li>
+                    <li><a href="#testimonials">Testimoni</a></li>
+                    <li><a href="#opportunity">Peluang Bisnis</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1>Solusi Stamina & Kesehatan dengan Ekstrak Jahe Hitam Alami</h1>
+                <p>Tingkatkan vitalitas, kendalikan gula darah, dan rasakan hidup yang lebih sehat dengan produk-produk premium Volten yang telah terbukti khasiatnya.</p>
+                <a href="#products" class="btn">Lihat Produk</a>
+                <a href="#contact" class="btn btn-accent">Konsultasi Sekarang</a>
+            </div>
+            <div class="hero-image">
+                <img src="4b-1024x1024.webp" alt="Produk Volten" class="hero-img">
+            </div>
+        </div>
+    </section>
+
+    <section class="problem-solution" id="problem">
+        <div class="container">
+            <div class="section-title">
+                <h2>Masalah & Solusi</h2>
+                <p>Kenali masalah kesehatan umum dan temukan solusi efektif dengan produk Volten</p>
+            </div>
+            
+            <div class="problem-container">
+                <div class="problem-card">
+                    <h3>Masalah Kesehatan Umum</h3>
+                    <ul>
+                        <li>Cepat lelah dan kurang stamina</li>
+                        <li>Gula darah tidak terkontrol</li>
+                        <li>Imunitas tubuh rendah</li>
+                        <li>Metabolisme lambat</li>
+                        <li>Tekanan darah tidak stabil</li>
+                    </ul>
+                </div>
+                
+                <div class="solution-card">
+                    <h3>Solusi dengan Volten</h3>
+                    <ul>
+                        <li>Jahe Hitam berkualitas tinggi</li>
+                        <li>Formula herbal alami</li>
+                        <li>Tanpa efek samping berbahaya</li>
+                        <li>Terdaftar BPOM dan Halal</li>
+                        <li>Hasil teruji secara klinis</li>
+                    </ul>
+                    <p>Volten memberikan solusi kesehatan holistik dengan ekstrak Jahe Hitam yang telah digunakan secara turun-temurun untuk meningkatkan vitalitas dan kesehatan tubuh.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>Produk Unggulan Volten</h2>
+                <p>Produk-produk premium dengan kualitas terbaik untuk kesehatan optimal</p>
+            </div>
+            
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="Vcafe-png.png" alt="VCafe" class="product-img">
+                    <div class="product-content">
+                        <h3>VCafe - Jahe Hitam Instan</h3>
+                        <p>Minuman kesehatan instan dengan ekstrak jahe hitam murni, praktis dan nikmat untuk dikonsumsi setiap hari.</p>
+                        <div class="badges">
+                            <span class="badge">BPOM</span>
+                            <span class="badge">Halal</span>
+                        </div>
+                        <a href="#contact" class="btn">Pesan Sekarang</a>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <img src="1 (1).webp" alt="VR4" class="product-img">
+                    <div class="product-content">
+                        <h3>VR4 - Suplemen Stamina</h3>
+                        <p>Formula khusus untuk meningkatkan stamina dan energi, cocok untuk aktivitas padat dan pemulihan setelah sakit.</p>
+                        <div class="badges">
+                            <span class="badge">BPOM</span>
+                            <span class="badge">Halal</span>
+                        </div>
+                        <a href="#contact" class="btn">Pesan Sekarang</a>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <img src="5 (2).png" alt="V20" class="product-img">
+                    <div class="product-content">
+                        <h3>V20 - Detox & Imunitas</h3>
+                        <p>Produk detox alami untuk membersihkan tubuh dari racun sekaligus meningkatkan sistem imunitas.</p>
+                        <div class="badges">
+                            <span class="badge">BPOM</span>
+                            <span class="badge">Halal</span>
+                        </div>
+                        <a href="#contact" class="btn">Pesan Sekarang</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Testimoni Pengguna</h2>
+                <p>Pengalaman nyata dari pengguna produk Volten yang telah merasakan manfaatnya</p>
+            </div>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Setelah konsumsi VCafe rutin selama 1 bulan, stamina saya meningkat drastis. Tidak mudah lelah meski kerja seharian."
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://via.placeholder.com/50/3498db/ffffff?text=U1" alt="User 1" class="author-img">
+                        <div>
+                            <h4>Budi Santoso</h4>
+                            <p>Pengguna VCafe</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Gula darah saya jadi lebih terkontrol setelah minum VR4. Hasil cek lab menunjukkan perbaikan yang signifikan."
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://via.placeholder.com/50/2c80b4/ffffff?text=U2" alt="User 2" class="author-img">
+                        <div>
+                            <h4>Maya Indah</h4>
+                            <p>Pengguna VR4</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "V20 membantu detox tubuh saya. Berat badan turun 5kg dalam 2 bulan dan kulit jadi lebih bersih."
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://via.placeholder.com/50/1abc9c/ffffff?text=U3" alt="User 3" class="author-img">
+                        <div>
+                            <h4>Agus Setiawan</h4>
+                            <p>Pengguna V20</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="business-opportunity" id="opportunity">
+        <div class="container">
+            <div class="section-title">
+                <h2>Peluang Bisnis Volten</h2>
+                <p>Bergabunglah dengan jaringan distributor Volten dan raih kesuksesan finansial</p>
+            </div>
+            
+            <div class="opportunity-content">
+                <h3>Mengapa Bergabung di Tim Kami?</h3>
+                <p>Volten menggunakan sistem NetCommerce yang memberikan keuntungan maksimal bagi setiap member:</p>
+                
+                <div style="margin-top: 30px; text-align: left; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    <div style="display: flex; align-items: flex-start; margin-bottom: 20px;">
+                        <i class="fas fa-check-circle" style="color: var(--accent-color); margin-right: 15px; margin-top: 5px;"></i>
+                        <div>
+                            <h4 style="margin-bottom: 5px;">Sistem Komisi Berjenjang</h4>
+                            <p style="color: var(--text-light);">Dapatkan komisi dari penjualan pribadi dan tim yang terus berkembang.</p>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; align-items: flex-start; margin-bottom: 20px;">
+                        <i class="fas fa-check-circle" style="color: var(--accent-color); margin-right: 15px; margin-top: 5px;"></i>
+                        <div>
+                            <h4 style="margin-bottom: 5px;">Pelatihan Gratis</h4>
+                            <p style="color: var(--text-light);">Dapatkan akses pelatihan pemasaran dan pengembangan bisnis secara lengkap.</p>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; align-items: flex-start; margin-bottom: 20px;">
+                        <i class="fas fa-check-circle" style="color: var(--accent-color); margin-right: 15px; margin-top: 5px;"></i>
+                        <div>
+                            <h4 style="margin-bottom: 5px;">Support System Lengkap</h4>
+                            <p style="color: var(--text-light);">Website member, materi promosi, dan tim support siap membantu kesuksesan Anda.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="#contact" class="btn" style="margin-top: 30px;">Bergabung Sekarang</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>Pertanyaan yang Sering Diajukan</h2>
+                <p>Temukan jawaban untuk pertanyaan umum seputar produk dan bisnis Volten</p>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Apakah produk Volten aman dikonsumsi?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Ya, semua produk Volten telah terdaftar BPOM dan bersertifikat Halal MUI. Produk dibuat dengan standar CPOTB (Cara Pembuatan Obat Tradisional yang Baik) sehingga aman untuk dikonsumsi.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Berapa lama pengiriman produk?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Pengiriman dilakukan dalam 1-3 hari kerja setelah pembayaran dikonfirmasi, tergantung lokasi pengiriman. Kami bekerja sama dengan ekspedisi terpercaya untuk memastikan produk sampai dengan aman.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Bagaimana cara menjadi distributor Volten?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Anda bisa bergabung sebagai distributor dengan membeli paket starter kit. Setelah bergabung, Anda akan mendapatkan akses ke sistem member, materi promosi, dan pelatihan gratis.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Apakah ada garansi untuk produk Volten?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Kami menjamin keaslian dan kualitas produk. Jika ada masalah dengan produk yang diterima, Anda dapat menghubungi kami dalam waktu 7 hari setelah penerimaan untuk proses penggantian.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-logo">
+                        <img src="logo.png" alt="Volten Logo" class="logo-img">
+                        <span class="footer-logo-text">VOLTEN WEB</span>
+                    </div>
+                    <p>Solusi kesehatan alami dengan ekstrak Jahe Hitam berkualitas tinggi. Produk terdaftar BPOM dan Halal MUI.</p>
+                    <p style="margin-top: 15px;"><i class="fas fa-heart" style="color: #e74c3c;"></i> Sehat alami, hidup berkualitas</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Link Cepat</h3>
+                    <ul>
+                        <li><a href="#home">Beranda</a></li>
+                        <li><a href="#problem">Masalah & Solusi</a></li>
+                        <li><a href="#products">Produk</a></li>
+                        <li><a href="#testimonials">Testimoni</a></li>
+                        <li><a href="#opportunity">Peluang Bisnis</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Kontak Kami</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Jl. Sehat No. 123, Jakarta</p>
+                    <p><i class="fas fa-phone"></i> (021) 1234-5678</p>
+                    <p><i class="fas fa-envelope"></i> info@voltenweb.com</p>
+                    <p style="margin-top: 20px; font-size: 0.9rem; color: #95a5a6;">
+                        *Disclaimer: Hasil yang didapatkan dapat bervariasi tergantung kondisi tubuh masing-masing individu. Produk ini adalah suplemen kesehatan, bukan pengganti obat dokter.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Volten Web. Semua hak dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="member-card" id="memberCard">
+        <div class="member-header">
+            <img src="logo.png" alt="Member Photo" class="member-photo">
+            <div class="member-info">
+                <h4>John Doe</h4>
+                <p>Agen Resmi Volten</p>
+                <p><i class="fas fa-star" style="color: #f1c40f;"></i> 4.9/5 (128 ulasan)</p>
+            </div>
+        </div>
+        <div class="member-contact">
+            <i class="fab fa-whatsapp"></i>
+            <div>
+                <p style="font-weight: 600; color: var(--text-dark);">Hubungi Saya</p>
+                <p style="font-size: 0.9rem; color: var(--text-light);">+62 812-3456-7890</p>
+            </div>
+        </div>
+    </div>
+
+    <a href="https://wa.me/6281234567890?text=Halo%20John%20Doe%2C%20saya%20mau%20tanya%20tentang%20produk%20Volten%20VCafe..." target="_blank" class="whatsapp-button">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            mobileMenuBtn.innerHTML = mainNav.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        const navLinks = document.querySelectorAll('nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mainNav.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // FAQ Accordion
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('active');
+                
+                // Close other FAQ items
+                faqQuestions.forEach(otherQuestion => {
+                    if (otherQuestion !== question) {
+                        otherQuestion.parentElement.classList.remove('active');
+                    }
+                });
+            });
+        });
+        
+        // Show Member Card with delay
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('memberCard').classList.add('show');
+            }, 2000);
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.boxShadow = '0 4px 12px rgba(52, 152, 219, 0.15)';
+            }
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
